@@ -1,0 +1,12 @@
+<% provide(:title, 'Choices') %>
+
+<h1> Showing <%= @choice.count %> live events </h1>
+
+<%= render 'table', object: @choices %>  
+
+<div class="btn-group">
+    <%= link_to "Create an event", new_choice_path, class: "btn btn-default btn-lg btn-primary" %>
+</div> 
+
+
+

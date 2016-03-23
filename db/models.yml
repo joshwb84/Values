@@ -1,0 +1,19 @@
+User:
+  name: string
+  email: string
+  password_digest: string
+  description: text
+  facebook: string
+  created_at: datetime
+  updated_at: datetime
+
+Value:
+  name: string
+  logo: string
+  definition: string
+  workexample: string
+  lifeexample: string
+
+Choice:
+  value_id: integer
+  user_id: integer

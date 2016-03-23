@@ -1,0 +1,101 @@
+<% provide(:title, 'Trifecta') %>
+<hr class="">
+    <div class="container target">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1 class=""><%= @trifecta.title %>
+                </h1>
+                <p class="lead">
+                    <b>Description:</b><%= @trifecta.description %>
+                </p>
+                <br>
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <!--left col-->
+                    <ul class="list-group">
+                        <li class="list-group-item text-right">
+                            <span class="pull-left">
+                                <strong>Organizer:</strong>
+                            </span><%= @trifecta.user.name %>
+                        </li>
+                        <li class="list-group-item text-right">
+                            <span class="pull-left">
+                                <strong>Category:</strong>
+                            </span><%= @trifecta.category.name %>
+                        </li>
+                        <li class="list-group-item text-right">
+                            <span class="pull-left">
+                                <strong>Date:</strong>
+                            </span><%= @trifecta.date.strftime("%B %e, %Y (%a)") %>
+                        </li>
+                        <li class="list-group-item text-right">
+                            <span class="pull-left">
+                                <strong>Time:</strong>
+                            </span><%= @trifecta.time.strftime("%l:%M %p") %>
+                        </li>
+                        <li class="list-group-item text-right">
+                            <span class="pull-left">
+                                <strong>Location:</strong>
+                            </span><%= @trifecta.location %>
+                        </li>
+                    </ul>
+                    <a data-target="#basicModal" class="btn btn-primary btn-lg btn-block" data-toggle="modal" >
+                        <i class="fa fa-ticket fa-2x"></i>
+                        <br>
+                            <br>Join this Event
+                            </a>
+                            <div class="modal fade" id="basicModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <%= simple_form_for([@trifecta, @reservation]) do |form|%>
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h4 class="modal-title">Reserve your spot for "<%= @event.title %>"
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <span class="strong"><%= form.label "Leave a comment about the event?",  required: false %>
+                                                </span>
+                                                <div class="col-lg-8"><%= form.input :comment, input_html: {class: "form-control"}, label: false %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                            <div class="modal-footer"><%= form.button :submit, class: "btn btn-success" %>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </div><% end %>
+                                    </div>
+                                </div>
+                                <br>
+                                    
+                                </div>
+                                <!--/col-3-->
+                                <div class="col-sm-8" contenteditable="false" style="">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">Other people attending</div>
+                                        <div class="panel-body"><% @reservations.each do |show| %>
+                                            <div class="col-sm-4 text-center"><%= image_tag show.user.avatar.url(:thumb) %>
+                                                <p>
+                                                    <strong><%= link_to show.user.name, user_path(show.user.id) %>
+                                                    </strong>
+                                                    <br>
+                                                        <em><%= show.comment %>
+                                                        </em>
+                                                    </p>
+                                                    <br>
+                                                    </div><% end %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+
+ 
+
+
+

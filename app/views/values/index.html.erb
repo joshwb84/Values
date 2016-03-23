@@ -1,0 +1,16 @@
+<% provide(:title, 'Library') %>
+<h1> The library currently has <b><%= @values.count %></b> values</h1>
+<div class="container">
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-md-12">
+        <% @values.each do |value| %> 
+        <div class="btn btn-default btn-xs"><%= link_to value.name, value %></div>
+        <% end %>
+    </div>
+  </div>
+       
+</div>
+
+
+
