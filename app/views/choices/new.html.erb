@@ -1,20 +1,26 @@
-<% provide(:title, 'New Event') %>
+<% provide(:title, 'Choose Values') %>
 <!DOCTYPE html>
 <html>
-<head>
-    <title></title>
+<head><div class="header", style="position: fixed; z-index: 1; background: #fff; margin-top: -20px">
+    <h2>From the list below, <strong>choose 3</strong> values that resonates with you</h2>
+    <div class="container">
+    <%= render "form" %> <br>          
+    </div>
+    </div><!-- End of header -->
 </head>
 
 <body>
-    <div class="container">
-     
-                       <%= render "form" %>
-
-                          
-               
+   <div class="container", style="margin-top: 180px"> 
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-md-12">
+        <% @values.each do |value| %> 
+        <%= link_to value.name, value, class: "btn btn-default btn-md" %><br />
+        <% end %>
     </div>
-    
-
+  </div>
+       
+</div>
         
     
 </body>
